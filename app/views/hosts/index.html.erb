@@ -1,0 +1,10 @@
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <% @hosts.each do |host| %>
+    <tr>
+      <td><%= link_to host.name, host_path(host) %></td>
+    </tr>
+  <% end %>
+</table>

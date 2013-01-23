@@ -1,0 +1,10 @@
+<h1><%= @host.name %></h1>
+<h2>Exported Resources</h2>
+<table>
+  <% @host.resources.where(:exported => true).each do |resource| %>
+    <tr>
+      <td><%= resource.restype %></td>
+      <td><%= resource.title %></td>
+    </tr>
+  <% end %>
+</table>
