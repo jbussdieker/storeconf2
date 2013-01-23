@@ -8,7 +8,17 @@
 </head>
 <body>
 
-<%= yield %>
+<div class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="#">Storeconf2</a>
+    <ul class="nav">
+      <li><%= link_to "Hosts", hosts_path %></li>
+    </ul>
+  </div>
+</div>
+<div class="container">
+  <%= yield %>
+</div>
 
 </body>
 </html>

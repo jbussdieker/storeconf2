@@ -1,10 +1,14 @@
 <h1><%= @host.name %></h1>
+<p>
+  <%= link_to "Back", hosts_path, :class => "btn" %>
+</p>
 <h2>Exported Resources</h2>
-<table>
+<table class="table">
   <% @host.resources.where(:exported => true).each do |resource| %>
     <tr>
       <td><%= resource.restype %></td>
       <td><%= resource.title %></td>
+      <td><%= link_to "Delete", resource_path(resource), :method => :delete %></td>
     </tr>
   <% end %>
 </table>

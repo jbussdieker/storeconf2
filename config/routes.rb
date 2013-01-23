@@ -1,5 +1,6 @@
 Storeconf2::Application.routes.draw do
   resources :hosts
+  resources :resources
   root :to => 'hosts#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
