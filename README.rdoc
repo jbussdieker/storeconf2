@@ -2,6 +2,8 @@
 
 Orphan facts
 
-`````
-select fact_values.id from fact_values left outer join hosts on hosts.id = fact_values.host_id where hosts.id is null;
-`````
+ select fact_values.id from fact_values left outer join hosts on hosts.id = fact_values.host_id where hosts.id is null;
+
+Orphan resources
+
+ select resources.id from resources left outer join hosts on hosts.id = resources.host_id where hosts.id is null;
