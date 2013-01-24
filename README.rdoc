@@ -1,9 +1,11 @@
 == Tricks
 
-Orphan facts
-
- select fact_values.id from fact_values left outer join hosts on hosts.id = fact_values.host_id where hosts.id is null;
-
 Orphan resources
 
- select resources.id from resources left outer join hosts on hosts.id = resources.host_id where hosts.id is null;
+ delete from resources where not exists(select hosts.id from hosts where hosts.id = resources.host_id);
+ delete from source_files where not exists(select resources.id from resources where resources.source_file_id = source_files.id);
+ delete from param_values where not exists(select resources.id from resources where resources.id = param_values.resource_id);
+ delete from param_names where not exists(select param_values.id from param_values where param_values.param_name_id = param_names.id);
+ delete from fact_values where not exists(select hosts.id from hosts where hosts.id = fact_values.host_id);
+ delete from fact_names where not exists(select fact_values.id from fact_values where fact_values.fact_name_id = fact_names.id);
+
