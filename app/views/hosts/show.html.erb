@@ -2,13 +2,37 @@
 <p>
   <%= link_to "Back", hosts_path, :class => "btn" %>
 </p>
+
 <h2>Exported Resources</h2>
 <table class="table">
+  <tr>
+    <td>Type</td>
+    <td>Title</td>
+    <td>Tags</td>
+    <td>Parameters</td>
+    <td></td>
+  </tr>
   <% @host.resources.where(:exported => true).each do |resource| %>
     <tr>
       <td><%= resource.restype %></td>
       <td><%= resource.title %></td>
+      <td><%= resource.tags.collect {|t|t.to_s}.join(", ") %></td>
+      <td>
+        <% resource.parameters.each do |param| %>
+          <%= param.name %>=<%= param.value %><br>
+        <% end %>
+      </td>
       <td><%= link_to "Delete", resource_path(resource), :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<h2>Facts</h2>
+<table class="table">
+  <% @host.facts.each do |fact| %>
+    <tr>
+      <td><%= fact.name %></td>
+      <td><%= fact.value %></td>
     </tr>
   <% end %>
 </table>
